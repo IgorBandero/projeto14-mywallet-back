@@ -1,8 +1,9 @@
-import { Router } from "express";
+import express from "express";
+import {validateUser, validateNewUser} from "../middlewares/validateUser.js";
+import {createUser} from "../controllers/userControllers.js";
 
-const userRouter = Router();
+const userRouter = express.Router();
 
-userRouter.post("/login");
-userRouter.post("/newuser");
+userRouter.post("/newuser", validateNewUser, createUser);
 
 export default userRouter;
